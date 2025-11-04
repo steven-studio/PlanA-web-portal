@@ -6,11 +6,11 @@ const ApexBarChart = ({ barChartData }) => {
   const [state, setState] = React.useState({
     series: [
       {
-        name: "Pending Amount",
+        name: "待處理金額",
         data: barChartData?.pending,
       },
       {
-        name: "Received Amount",
+        name: "已收金額",
         data: barChartData?.received,
       },
     ],
@@ -40,7 +40,7 @@ const ApexBarChart = ({ barChartData }) => {
       },
       yaxis: {
         title: {
-          text: "Amount",
+          text: "金額",
         },
       },
       fill: {

@@ -39,7 +39,7 @@ const AccountNumberPage = () => {
 
   const handleUpdateSetting = async () => {
     if (!accountNumber) {
-      setError("Please fill all fields");
+      setError("請填寫所有欄位");
       return;
     }
 
@@ -69,10 +69,10 @@ const AccountNumberPage = () => {
   return (
     <Box>
       <Typography variant="h4" sx={{ fontWeight: "600" }}>
-        Account Number
+        收款帳號
       </Typography>
       <Typography variant="body1" sx={{ color: "#666", mb: 2 }}>
-        Manage your account number here
+        在此管理收款帳號
       </Typography>
 
       <Grid container spacing={2} alignItems={error ? "center" : "flex-end"}>
@@ -95,7 +95,7 @@ const AccountNumberPage = () => {
         <Grid size={{ xs: 12, sm: 6 }}>
           <CustomButton
             btnLabel={
-              isLoading.update ? "Updating..." : "Update Account Number"
+              isLoading.update ? "更新中..." : "更新收款帳號"
             }
             handlePressBtn={handleUpdateSetting}
             variant="webbutton"

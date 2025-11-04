@@ -36,21 +36,21 @@ const PasswordSection = () => {
       !passwordData.newPassword ||
       !passwordData.confirmNewPassword
     ) {
-      enqueueSnackbar("Please fill all password fields", {
+      enqueueSnackbar("請填寫所有密碼欄位", {
         variant: "error",
       });
       return;
     }
 
     if (passwordData.newPassword !== passwordData.confirmNewPassword) {
-      enqueueSnackbar("New password and confirm password do not match", {
+      enqueueSnackbar("新密碼與確認密碼不一致", {
         variant: "error",
       });
       return;
     }
 
     if (passwordData.newPassword.length < 8) {
-      enqueueSnackbar("Password must be at least 8 characters long", {
+      enqueueSnackbar("密碼長度至少需要 8 個字元", {
         variant: "error",
       });
       return;
@@ -65,7 +65,7 @@ const PasswordSection = () => {
       });
       
       if (response.status === 200 || response.status === 201) {
-        enqueueSnackbar("Password changed successfully!", {
+        enqueueSnackbar("密碼變更成功！", {
           variant: "success",
         });
         // Reset password fields
@@ -75,13 +75,13 @@ const PasswordSection = () => {
           confirmNewPassword: "",
         });
       } else {
-        enqueueSnackbar(response.message || "Failed to change password", {
+        enqueueSnackbar(response.message || "變更密碼失敗", {
           variant: "error",
         });
       }
     } catch (error) {
       console.error("Error changing password:", error);
-      enqueueSnackbar("Failed to change password", {
+      enqueueSnackbar("變更密碼失敗", {
         variant: "error",
       });
     } finally {
@@ -130,14 +130,14 @@ const PasswordSection = () => {
                 mb: 1
               }}
             >
-              Update Password
+              更新密碼
             </Typography>
             <Typography 
               variant="body1" 
               color="text.secondary"
               sx={{ fontSize: "1rem" }}
             >
-              Change your password securely
+              安全地更新您的密碼
             </Typography>
           </Box>
         </Box>
@@ -148,7 +148,7 @@ const PasswordSection = () => {
               name="oldPassword"
               value={passwordData.oldPassword}
               onChange={handlePasswordChange}
-              placeholder="Enter current password"
+              placeholder="輸入目前密碼"
               type="password"
               InputStartIcon={<LockOutlined />}
               showPassIcon={true}
@@ -160,7 +160,7 @@ const PasswordSection = () => {
               name="newPassword"
               value={passwordData.newPassword}
               onChange={handlePasswordChange}
-              placeholder="Enter new password"
+              placeholder="輸入新密碼"
               type="password"
               InputStartIcon={<SecurityOutlined />}
               showPassIcon={true}
@@ -172,7 +172,7 @@ const PasswordSection = () => {
               name="confirmNewPassword"
               value={passwordData.confirmNewPassword}
               onChange={handlePasswordChange}
-              placeholder="Confirm new password"
+              placeholder="再次確認新密碼"
               type="password"
               InputStartIcon={<SecurityOutlined />}
               showPassIcon={true}
@@ -183,7 +183,7 @@ const PasswordSection = () => {
 
         <Box sx={{ mt: 4 }}>
           <CustomButton
-            btnLabel={loading ? "Changing Password..." : "Change Password"}
+            btnLabel={loading ? "變更中..." : "修改密碼"}
             handlePressBtn={handleChangePassword}
             btnBgColor="primary.main"
             btnTextColor="white"

@@ -216,7 +216,7 @@ const EditUserDialog = ({ open, onClose, user, onRefresh }) => {
                 {user.name?.charAt(0) || "U"}
               </Avatar>
               <Typography variant="h6" color="white" sx={{ fontWeight: "600" }}>
-                Edit User: {user.name}
+                編輯使用者：{user.name}
               </Typography>
             </Box>
             <IconButton onClick={handleClose} sx={{ color: "white" }}>
@@ -231,7 +231,7 @@ const EditUserDialog = ({ open, onClose, user, onRefresh }) => {
                 variant="h6"
                 sx={{ mb: 1, color: "#333", fontWeight: "600" }}
               >
-                User Information
+                使用者資料
               </Typography>
 
               <Grid container spacing={2}>
@@ -273,7 +273,7 @@ const EditUserDialog = ({ open, onClose, user, onRefresh }) => {
                 variant="h6"
                 sx={{ mt: 2, mb: 1, color: "#333", fontWeight: "600" }}
               >
-                Update Interest and Loan Limit
+                更新利率與額度
               </Typography>
               <Grid container spacing={2}>
                 <Grid size={{ xs: 12, md: 6 }}>
@@ -283,7 +283,7 @@ const EditUserDialog = ({ open, onClose, user, onRefresh }) => {
                       handleInputChange("interest", e.target.valueAsNumber)
                     }
                     InputStartIcon={<Percent size={18} color="#666" />}
-                    placeholder="Interest Rate"
+                    placeholder="利率"
                     fullWidth
                     type="number"
                     error={Boolean(errors.interest)}
@@ -297,7 +297,7 @@ const EditUserDialog = ({ open, onClose, user, onRefresh }) => {
                       handleInputChange("loanLimit", e.target.valueAsNumber)
                     }
                     InputStartIcon={<Banknote size={18} color="#666" />}
-                    placeholder="Loan Limit"
+                    placeholder="貸款額度"
                     fullWidth
                     type="number"
                     error={Boolean(errors.loanLimit)}
@@ -307,7 +307,7 @@ const EditUserDialog = ({ open, onClose, user, onRefresh }) => {
               </Grid>
               <Stack alignItems={"flex-end"} my={2}>
                 <CustomButton
-                  btnLabel={isLoading.update ? "Updating..." : "Update User"}
+                  btnLabel={isLoading.update ? "更新中..." : "更新使用者"}
                   handlePressBtn={handleUpdateUser}
                   disabled={isLoading.update}
                   variant={"authbutton"}
@@ -324,17 +324,16 @@ const EditUserDialog = ({ open, onClose, user, onRefresh }) => {
                 variant="h6"
                 sx={{ mt: 2, color: "#333", fontWeight: "600" }}
               >
-                Reset Password
+                重設密碼
               </Typography>
               <Typography variant="body2" sx={{ mb: 2, color: "#666" }}>
-                Leave password fields empty if you don't want to reset the
-                password
+                若不需重設密碼，請將密碼欄位留空
               </Typography>
 
               <Grid container spacing={2}>
                 <Grid size={{ xs: 12, md: 6 }}>
                   <TextInput
-                    showLabel="New Password"
+                    showLabel="新密碼"
                     type="password"
                     value={passwordData.newPassword}
                     onChange={(e) =>
@@ -348,7 +347,7 @@ const EditUserDialog = ({ open, onClose, user, onRefresh }) => {
                 </Grid>
                 <Grid size={{ xs: 12, md: 6 }}>
                   <TextInput
-                    showLabel="Confirm New Password"
+                    showLabel="確認新密碼"
                     type="password"
                     value={passwordData.confirmPassword}
                     onChange={(e) =>
@@ -364,7 +363,7 @@ const EditUserDialog = ({ open, onClose, user, onRefresh }) => {
               <Stack alignItems={"flex-end"} my={2}>
                 <CustomButton
                   btnLabel={
-                    isLoading.resetPassword ? "Resetting..." : "Reset Password"
+                    isLoading.resetPassword ? "重設中..." : "重設密碼"
                   }
                   handlePressBtn={handleResetPassword}
                   disabled={isLoading.resetPassword}

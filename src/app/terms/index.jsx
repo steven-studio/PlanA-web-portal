@@ -76,13 +76,13 @@ const TermsPage = () => {
         alignItems="center"
       >
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-          <Typography variant="h4" fontWeight={600}>Terms & Conditions</Typography>
+          <Typography variant="h4" fontWeight={600}>服務條款</Typography>
           {isLoading.fetch && <CircularProgress size={20} />}
         </Box>
 
         <CustomButton
           variant="webbutton"
-          btnLabel={isLoading.update ? "Updating..." : "Update"}
+          btnLabel={isLoading.update ? "更新中..." : "更新"}
           handlePressBtn={handleUpdateSetting}
           disabled={isLoading.update}
           width="auto"

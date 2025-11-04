@@ -8,12 +8,12 @@ import FaqDialog from "./faqDialog";
 
 // Table headers for loan management
 const tableHeaders = [
-  { id: "createdAt", title: "Created At", align: "left" },
-  { id: "question", title: "Question", align: "left" },
-  { id: "answer", title: "Answer", align: "left" },
-  { id: "order", title: "Order", align: "left" },
-  { id: "status", title: "Status", align: "left" },
-  { id: "actions", title: "Actions", align: "left" },
+  { id: "createdAt", title: "建立時間", align: "left" },
+  { id: "question", title: "問題", align: "left" },
+  { id: "answer", title: "回答", align: "left" },
+  { id: "order", title: "排序", align: "left" },
+  { id: "status", title: "狀態", align: "left" },
+  { id: "actions", title: "操作", align: "left" },
 ];
 
 // Display rows configuration
@@ -39,13 +39,13 @@ const FaqPage = () => {
       if ([200, 201].includes(response?.status)) {
         setFaqData(response.data.data);
       } else {
-        enqueueSnackbar(response?.data?.message || "Something went wrong", {
+        enqueueSnackbar(response?.data?.message || "取得常見問題失敗", {
           variant: "error",
         });
       }
     } catch (error) {
       enqueueSnackbar(
-        error?.response?.data?.message || "Something went wrong",
+        error?.response?.data?.message || "取得常見問題失敗",
         {
           variant: "error",
         }
@@ -65,12 +65,12 @@ const FaqPage = () => {
       setIsLoading(true);
       const response = await updateFaq(row._id, { status: newStatus});
       if ([200, 201].includes(response?.status)) {
-        enqueueSnackbar(response?.data?.message || "Something went wrong", {
+        enqueueSnackbar(response?.data?.message || "更新成功", {
           variant: "success",
         });
         fetchAllFaqs();
       } else {
-        enqueueSnackbar(response?.data?.message || "Something went wrong", {
+        enqueueSnackbar(response?.data?.message || "更新失敗", {
           variant: "error",
         });
       }
@@ -91,14 +91,14 @@ const FaqPage = () => {
       >
         <Box>
           <Typography variant="h4" sx={{ fontWeight: "600" }}>
-            FAQ
+            常見問題
           </Typography>
           <Typography variant="body1" sx={{ color: "#666" }}>
-            Manage all FAQ
+            管理常見問題
           </Typography>
         </Box>
         <CustomButton
-          btnLabel={"Create FAQ"}
+          btnLabel={"新增常見問題"}
           handlePressBtn={() => {
             faqDialogRef.current?.openDialog({ type: "add", data: null });
           }}

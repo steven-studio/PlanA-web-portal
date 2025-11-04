@@ -53,19 +53,19 @@ const tableStyle = {
 
 const LOAN_STATUS = [
   {
-    label: "Pending",
+    label: "待處理",
     value: "pending",
   },
   {
-    label: "Approved",
+    label: "已核准",
     value: "approved",
   },
   {
-    label: "Rejected",
+    label: "已拒絕",
     value: "rejected",
   },
   {
-    label: "Completed",
+    label: "已結清",
     value: "completed",
   },
 ];
@@ -146,7 +146,7 @@ export default function PaginatedTable({
                     mb: 0.5,
                   }}
                 >
-                  {row.user?.fullName || row.fullName || "N/A"}
+                  {row.user?.fullName || row.fullName || "無資料"}
                 </Typography>
                 <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                   <Mail size={14} color="#666" />
@@ -154,7 +154,7 @@ export default function PaginatedTable({
                     variant="caption"
                     sx={{ color: "#666", fontSize: "12px" }}
                   >
-                    {row.user?.email || row.email || "N/A"}
+                    {row.user?.email || row.email || "無資料"}
                   </Typography>
                 </Box>
               </Box>
@@ -178,7 +178,7 @@ export default function PaginatedTable({
                 variant="body2"
                 sx={{ color: "#333", fontWeight: "500" }}
               >
-                {row.phone || "N/A"}
+                {row.phone || "無資料"}
               </Typography>
             </Box>
           </TableCell>
@@ -205,7 +205,7 @@ export default function PaginatedTable({
                   mb: 0.5,
                 }}
               >
-                {row.address || "N/A"}{" "}
+                {row.address || "無資料"}{" "}
                 {[row.city, row.state, row.country].filter(Boolean).join(", ")}
               </Typography>
             </Box>
@@ -242,7 +242,7 @@ export default function PaginatedTable({
                 fontSize: "14px",
               }}
             >
-              {row.interestRate || "N/A"}
+              {row.interestRate || "無資料"}
             </Typography>
           </TableCell>
         );
@@ -258,7 +258,7 @@ export default function PaginatedTable({
               }}
             >
               <Chip
-                label={row.emailVerified ? "Verified" : "Not Verified"}
+                label={row.emailVerified ? "已驗證" : "未驗證"}
                 size="small"
                 sx={{
                   backgroundColor: row.emailVerified ? "#e8f5e8" : "#ffebee",
@@ -365,7 +365,7 @@ export default function PaginatedTable({
           <TableCell>
             {row?.slipUrl ? (
               <CustomButton
-                btnLabel={"View"}
+                btnLabel={"檢視"}
                 width="auto"
                 handlePressBtn={() => window.open(row.slipUrl)}
               />
@@ -475,7 +475,7 @@ export default function PaginatedTable({
             <Box sx={{ display: "flex", gap: 1, justifyContent: "center" }}>
               {onViewClick && (
                 <CustomButton
-                  btnLabel="View details"
+                  btnLabel="查看詳情"
                   handlePressBtn={() => onViewClick(row)}
                   btnTextColor="#fff"
                   btnBgColor="#1976d2"
@@ -554,7 +554,7 @@ export default function PaginatedTable({
   };
 
   const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString("en-US", {
+    return new Date(dateString).toLocaleDateString("zh-TW", {
       year: "numeric",
       month: "short",
       day: "numeric",
@@ -612,12 +612,12 @@ export default function PaginatedTable({
                 <TableCell colSpan={displayRows.length} align="center">
                   <Box sx={{ py: 4, textAlign: "center" }}>
                     <Typography fontSize="16px" sx={{ color: "#666", mb: 1 }}>
-                      {isLoading ? "Loading data..." : "No Data found"}
+                      {isLoading ? "資料載入中..." : "沒有資料"}
                     </Typography>
                     <Typography fontSize="14px" sx={{ color: "#999" }}>
                       {isLoading
-                        ? "Please wait while we fetch the data"
-                        : "Try adding some data to get started"}
+                        ? "正在載入資料，請稍候"
+                        : "請新增資料以開始使用"}
                     </Typography>
                   </Box>
                 </TableCell>
@@ -636,7 +636,7 @@ export default function PaginatedTable({
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
-          labelRowsPerPage="Rows per page"
+          labelRowsPerPage="每頁筆數"
           sx={{
             "& .MuiTablePagination-selectLabel, & .MuiTablePagination-displayedRows":
               {

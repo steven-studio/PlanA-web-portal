@@ -35,13 +35,13 @@ const ProfileSection = () => {
             email: response.data.data.email || "",
           });
         } else {
-          enqueueSnackbar("Failed to fetch admin details", {
+          enqueueSnackbar("取得管理員資料失敗", {
             variant: "error",
           });
         }
       } catch (error) {
         console.error("Error fetching admin details:", error);
-        enqueueSnackbar("Failed to fetch admin details", {
+        enqueueSnackbar("取得管理員資料失敗", {
           variant: "error",
         });
       } finally {
@@ -61,7 +61,7 @@ const ProfileSection = () => {
 
   const handleProfileUpdate = async () => {
     if (!profileData.name) {
-      enqueueSnackbar("Please fill name field", {
+      enqueueSnackbar("請填寫姓名欄位", {
         variant: "error",
       });
       return;
@@ -74,12 +74,12 @@ const ProfileSection = () => {
       });
 
       if (response.status === 200 || response.status === 201) {
-        enqueueSnackbar("Profile updated successfully!", {
+        enqueueSnackbar("個人資料更新成功！", {
           variant: "success",
         });
       } else {
         enqueueSnackbar(
-          response.message || "Failed to update profile",
+          response.message || "更新個人資料失敗",
           {
             variant: "error",
           }
@@ -87,7 +87,7 @@ const ProfileSection = () => {
       }
     } catch (error) {
       console.error("Error updating profile:", error);
-      enqueueSnackbar("Failed to update profile", {
+      enqueueSnackbar("更新個人資料失敗", {
         variant: "error",
       });
     } finally {
@@ -134,20 +134,20 @@ const ProfileSection = () => {
               sx={{
                 fontWeight: 700,
                 color: "primary.main",
-                mb: 1,
-              }}
-            >
-              Profile Information
-            </Typography>
-            <Typography
-              variant="body1"
-              color="text.secondary"
-              sx={{ fontSize: "1rem" }}
-            >
-              Update your profile details
-            </Typography>
-          </Box>
+              mb: 1,
+            }}
+          >
+            個人資訊
+          </Typography>
+          <Typography
+            variant="body1"
+            color="text.secondary"
+            sx={{ fontSize: "1rem" }}
+          >
+            更新您的個人資料
+          </Typography>
         </Box>
+      </Box>
 
         {fetchingData ? (
           <Box sx={{ display: "flex", justifyContent: "center", py: 4 }}>
@@ -165,7 +165,7 @@ const ProfileSection = () => {
                 name="name"
                 value={profileData.name}
                 onChange={handleProfileChange}
-                placeholder="Enter name"
+                placeholder="輸入姓名"
                 InputStartIcon={<PersonOutlined />}
                 fullWidth={true}
               />
@@ -174,7 +174,7 @@ const ProfileSection = () => {
               <TextInput
                 name="email"
                 value={profileData.email}
-                placeholder="Email (read-only)"
+                placeholder="電子郵件（僅供檢視）"
                 type="email"
                 InputStartIcon={<PersonOutlined />}
                 fullWidth={true}
@@ -186,7 +186,7 @@ const ProfileSection = () => {
 
         <Box sx={{ mt: 4 }}>
           <CustomButton
-            btnLabel={loading ? "Updating..." : "Update Profile"}
+            btnLabel={loading ? "更新中..." : "更新個人資料"}
             handlePressBtn={handleProfileUpdate}
             btnBgColor="primary.main"
             btnTextColor="white"

@@ -206,7 +206,7 @@ export default function MainLayout({ children }) {
                   color: "primary.main",
                 }}
               >
-                Loan App Dashboard
+                貸款管理儀表板
               </Typography>
             </Box>
           </Box>
@@ -244,7 +244,7 @@ export default function MainLayout({ children }) {
                 cursor: "pointer",
               }}
             >
-              Admin
+              管理員
             </Typography>
           </Box>
           <Menu
@@ -274,7 +274,7 @@ export default function MainLayout({ children }) {
               <ListItemIcon>
                 <Settings fontSize="small" />
               </ListItemIcon>
-              Settings
+              設定
             </MenuItem>
 
             <Divider sx={{ my: 1 }} />
@@ -283,7 +283,7 @@ export default function MainLayout({ children }) {
               <ListItemIcon>
                 <LogOut fontSize="small" />
               </ListItemIcon>
-              Logout
+              登出
             </MenuItem>
           </Menu>
         </Toolbar>

@@ -12,8 +12,8 @@ import DynamicTable from "../../components/dynamicTable";
 
 // Updated table headers for API data structure
 const tableHeaders1 = [
-  { id: "createdAt", title: "Created At", align: "left" },
-  { id: "message", title: "Message", align: "left" },
+  { id: "createdAt", title: "建立時間", align: "left" },
+  { id: "message", title: "訊息", align: "left" },
 ];
 
 // Updated columns to display
@@ -21,16 +21,16 @@ const displayRows1 = ["createdAt", "message"];
 
 // Table headers for loan management
 const tableHeaders2 = [
-  { id: "createdAt", title: "Created At", align: "left" },
-  { id: "userInfo", title: "User", align: "left" },
-  { id: "loanAmount", title: "Loan Amount", align: "left" },
-  { id: "interestRate", title: "Interest Rate", align: "left" },
-  { id: "totalPayableAmount", title: "Payable Amount", align: "left" },
-  { id: "totalMonths", title: "Tenure", align: "left" },
-  { id: "paidAmount", title: "Paid Amount", align: "left" },
-  { id: "remainingBalance", title: "Remaining Balance", align: "left" },
-  { id: "status", title: "Status", align: "left" },
-  { id: "actions", title: "Actions", align: "left" },
+  { id: "createdAt", title: "申請日期", align: "left" },
+  { id: "userInfo", title: "使用者", align: "left" },
+  { id: "loanAmount", title: "貸款金額", align: "left" },
+  { id: "interestRate", title: "利率", align: "left" },
+  { id: "totalPayableAmount", title: "應付總額", align: "left" },
+  { id: "totalMonths", title: "期數", align: "left" },
+  { id: "paidAmount", title: "已繳金額", align: "left" },
+  { id: "remainingBalance", title: "剩餘金額", align: "left" },
+  { id: "status", title: "狀態", align: "left" },
+  { id: "actions", title: "操作", align: "left" },
 ];
 
 // Display rows configuration
@@ -68,13 +68,13 @@ const Userhistory = () => {
         setUsersData(response.data.data);
       } else {
         setError(true);
-        enqueueSnackbar(response.data.message, {
+        enqueueSnackbar(response.data.message || "取得使用者資料失敗", {
           variant: "error",
         });
       }
     } catch (error) {
       setError(true);
-      enqueueSnackbar(error.response.data.message, {
+      enqueueSnackbar(error.response?.data?.message || "取得使用者資料失敗", {
         variant: "error",
       });
     } finally {
@@ -89,12 +89,12 @@ const Userhistory = () => {
       if ([200, 201].includes(response?.status)) {
         setLoanData(response.data.data.loanRequests);
       } else {
-        enqueueSnackbar(response?.data?.message, {
+        enqueueSnackbar(response?.data?.message || "貸款資料取得失敗", {
           variant: "error",
         });
       }
     } catch (error) {
-      enqueueSnackbar(error?.response?.data?.message, {
+      enqueueSnackbar(error?.response?.data?.message || "貸款資料取得失敗", {
         variant: "error",
       });
     } finally {
@@ -115,17 +115,17 @@ const Userhistory = () => {
       const response = await updateLoanStatus(row._id, { status });
       if ([200, 201].includes(response?.status)) {
         fetchAllLoanRequest();
-        enqueueSnackbar(response?.data?.message, {
+        enqueueSnackbar(response?.data?.message || "更新成功", {
           variant: "success",
         });
       } else {
-        enqueueSnackbar(response?.data?.message, {
+        enqueueSnackbar(response?.data?.message || "更新失敗", {
           variant: "error",
         });
       }
     } catch (error) {
       enqueueSnackbar(
-        error?.response?.data?.message || "Something went wrong",
+        error?.response?.data?.message || "發生未知錯誤",
         {
           variant: "error",
         }
@@ -142,7 +142,7 @@ const Userhistory = () => {
   if (error) {
     return (
       <Typography variant="body1" sx={{ color: "red" }}>
-        Error fetching users
+        取得使用者資料時發生錯誤
       </Typography>
     );
   }
@@ -159,10 +159,10 @@ const Userhistory = () => {
         </IconButton>
         <Box>
           <Typography variant="h4" sx={{ fontWeight: "600" }}>
-            Users history
+            使用者歷史紀錄
           </Typography>
           <Typography variant="body1" sx={{ color: "#666" }}>
-            Manage your users history here
+            在此查看使用者歷史紀錄
           </Typography>
         </Box>
       </Stack>

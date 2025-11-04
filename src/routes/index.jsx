@@ -28,28 +28,28 @@ import AccountNumberPage from "../app/accountNumber";
 const AUTH_ROUTES = [
   {
     id: 1,
-    name: "Login",
+    name: "登入",
     component: <Login />,
     exact: "exact",
     path: "login",
   },
   {
     id: 2,
-    name: "Register",
+    name: "忘記密碼",
     component: <ForgotPassword />,
     exact: "exact",
     path: "forgot-password",
   },
   {
     id: 3,
-    name: "OTP Verification",
+    name: "驗證碼確認",
     component: <OTPVerification />,
     exact: "exact",
     path: "otp-verification",
   },
   {
     id: 4,
-    name: "Reset Password",
+    name: "重設密碼",
     component: <SetNewPassword />,
     exact: "exact",
     path: "set-new-password",
@@ -59,7 +59,7 @@ const AUTH_ROUTES = [
 const ADMIN_ROUTES = [
   {
     id: 1,
-    name: "Dashboard",
+    name: "儀表板",
     component: <Dashboard />,
     exact: "exact",
     path: "/",
@@ -69,7 +69,7 @@ const ADMIN_ROUTES = [
 
   {
     id: 2,
-    name: "Users",
+    name: "使用者",
     component: <UsersManagement />,
     exact: "exact",
     path: "/users",
@@ -78,7 +78,7 @@ const ADMIN_ROUTES = [
   },
   {
     id: 3,
-    name: "Loan Management",
+    name: "貸款管理",
     component: <LoanManagement />,
     exact: "exact",
     path: "/loan-management",
@@ -87,7 +87,7 @@ const ADMIN_ROUTES = [
   },
   {
     id: 3,
-    name: "Faq",
+    name: "常見問題",
     component: <FaqPage />,
     exact: "exact",
     path: "/faq",
@@ -96,7 +96,7 @@ const ADMIN_ROUTES = [
   },
   {
     id: 3,
-    name: "Terms and Conditions",
+    name: "服務條款",
     component: <TermsPage />,
     exact: "exact",
     path: "/terms-conditions",
@@ -105,7 +105,7 @@ const ADMIN_ROUTES = [
   },
   {
     id: 3,
-    name: "Privacy Policy",
+    name: "隱私政策",
     component: <PrivacyPage />,
     exact: "exact",
     path: "/privacy-policy",
@@ -114,7 +114,7 @@ const ADMIN_ROUTES = [
   },
   {
     id: 3,
-    name: "Account Number",
+    name: "收款帳號",
     component: <AccountNumberPage />,
     exact: "exact",
     path: "/account-number",
@@ -124,7 +124,7 @@ const ADMIN_ROUTES = [
 
   {
     id: 4,
-    name: "Settings",
+    name: "設定",
     component: <SettingsManagement />,
     exact: "exact",
     path: "/settings",
@@ -133,7 +133,7 @@ const ADMIN_ROUTES = [
   },
   {
     id: 5,
-    name: "Loan Details",
+    name: "貸款詳情",
     component: <LoanDetails />,
     exact: "exact",
     path: "/loan-detail/:id/user/:userId",
@@ -143,7 +143,7 @@ const ADMIN_ROUTES = [
   },
   {
     id: 5,
-    name: "User History",
+    name: "使用者歷程",
     component: <Userhistory />,
     exact: "exact",
     path: "/user-history/:id",

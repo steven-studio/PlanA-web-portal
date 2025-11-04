@@ -20,14 +20,14 @@ const UsersManagement = () => {
 
   // Updated table headers for API data structure
   const tableHeaders = [
-    { id: "id", title: "ID", align: "center" },
-    { id: "userInfo", title: "User Info", align: "left" },
-    { id: "phone", title: "Phone", align: "center" },
-    { id: "completeAddress", title: "Complete Address", align: "left" },
-    { id: "interestRate", title: "Interest Rate", align: "center" },
-    { id: "status", title: "Status", align: "center" },
-    { id: "createdAt", title: "Joined Date", align: "center" },
-    { id: "actions", title: "Actions", align: "center" },
+    { id: "id", title: "編號", align: "center" },
+    { id: "userInfo", title: "使用者資訊", align: "left" },
+    { id: "phone", title: "電話", align: "center" },
+    { id: "completeAddress", title: "完整地址", align: "left" },
+    { id: "interestRate", title: "利率", align: "center" },
+    { id: "status", title: "狀態", align: "center" },
+    { id: "createdAt", title: "加入日期", align: "center" },
+    { id: "actions", title: "操作", align: "center" },
   ];
 
   // Updated columns to display
@@ -53,10 +53,10 @@ const UsersManagement = () => {
         const transformedData = response.data.data.map((user, index) => ({
           id: index + 1, // Use index as display ID
           _id: user._id, // Keep original ID for operations
-          name: user.fullName || user.name || "N/A",
+          name: user.fullName || user.name || "無資料",
           email: user.email,
-          phone: user.phoneNumber || user.contactNumber || "N/A",
-          address: user.address || "N/A",
+          phone: user.phoneNumber || user.contactNumber || "無資料",
+          address: user.address || "無資料",
           city: user.city || "",
           state: user.state || "",
           country: user.country || "",
@@ -76,7 +76,7 @@ const UsersManagement = () => {
       }
     } catch (error) {
       console.error("Error fetching users:", error);
-      enqueueSnackbar("Failed to fetch users. Please try again.", {
+      enqueueSnackbar("取得使用者資料失敗，請稍後再試。", {
         variant: "error",
       });
     } finally {
@@ -119,10 +119,10 @@ const UsersManagement = () => {
       {/* Simple Header */}
       <Box sx={{ mb: 3 }}>
         <Typography variant="h4" sx={{ fontWeight: "600" }}>
-          Users Management
+          使用者管理
         </Typography>
         <Typography variant="body1" sx={{ color: "#666" }}>
-          Manage your users here
+          在這裡管理所有使用者
         </Typography>
       </Box>
 
